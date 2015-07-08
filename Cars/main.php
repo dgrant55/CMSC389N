@@ -185,7 +185,7 @@
 	        </div>
 	        <div id="main">
 		        <div id="hint">
-		        	Hint: When you decide you don't like a car, you can click it to remove it from the list.
+		        	Use the controls on the left to select cars. When you decide you don't like a car, you can click it to remove it from the list.
 	        	</div>
 	            <div id="sortByDiv">
 	            	<br>
