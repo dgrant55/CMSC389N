@@ -80,3 +80,19 @@ output {
     height: 16px;
     background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
 }
+
+.box {
+    width: 400px;
+}
+
+legend {
+    color: White;
+}
+
+fieldset {
+    border-radius: 20px;
+}
+
+input {
+    border-radius: 10px;
+}
