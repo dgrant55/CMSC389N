@@ -43,3 +43,11 @@ VALUES ('2015', 'Honda', 'Accord', 'sedan', 'midsize', '22000', '31', '5', 'gas'
 
 INSERT INTO Cars.specifications
 VALUES ('2014', 'Hyundai', 'Elantra', 'sedan', 'compact', '17000', '32', '5', 'gas', LOAD_FILE('C:/xampp/htdocs/projects/group/images/10.jpg'), 'images/10.jpg');
+
+CREATE DATABASE login;
+
+CREATE TABLE cars.login {
+	username	 	VARCHAR(20),
+	email 			VARCHAR(100),
+	password		VARCHAR(50)
+);
