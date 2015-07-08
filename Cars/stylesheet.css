@@ -23,13 +23,16 @@ body {
     float: right;
 }
 
-#resultsList {
-    column-count: 6;
-    column-gap: 1.75em;
+li{
+  float:left;
+  display:inline;
+  width: 250px;
 }
 
 #results {
     padding: 30px;
+    float: right
+    width: 75%;
 }
 
 output {

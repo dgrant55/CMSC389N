@@ -13,6 +13,9 @@
 
     <body>
     	<?php
+    		
+    		$carlist = [];
+
     		if(isset($_GET["submit"])){
     			$db_connection = connectToDB($host, $user, $password, $database);
 
@@ -41,11 +44,14 @@
 						$manufacturer = $recordArray['manufacturer'];
 						$model = $recordArray['model'];
 						$image = $recordArray['image'];
+						$imgpath = $recordArray['imgpath'];
 
-						//echo $year, $manufacturer, $model;
-						//echo '<img src="data:image/jpeg;base64,'.base64_encode($image);' />';
-												
-						//TODO
+						$carlist[] = array(
+						    "year" => $year,
+						    "manufacturer" => $manufacturer,
+						    "model" => $model,
+						    "imgpath" => $imgpath
+						);
 
 		     		}
 					mysqli_free_result($result);
@@ -157,7 +163,18 @@
 	        	</div>
 	        	<div id="results">
 	            	<ul id="resultsList">
-	            		This will be filled by updateData()
+	            		<?php
+	            			foreach ($carlist as $key => $value) {
+	            				?>
+	            				<li>
+		            				<figure>
+									  	<img src=<?php echo $value["imgpath"]; ?> width="150" height="80">
+									  	<figcaption><?php echo $value["year"], " ", $value["manufacturer"], " ", $value["model"]; ?></figcaption>
+									</figure>
+								</li>
+								<?php
+	            			}
+	            		?>
 	            	</ul>
 	        	</div>
 	        </div>

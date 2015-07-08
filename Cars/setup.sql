@@ -10,8 +10,8 @@ CREATE TABLE cars.specifications (
 	mpg 			INT,
 	stars 			INT,
 	fuel 			ENUM('gas', 'diesel', 'hybrid', 'electric'),
-	image 			LONGBLOB
-	igpath			VARCHAR(50)
+	image 			LONGBLOB,
+	imgpath			VARCHAR(50)
 );
 
 INSERT INTO Cars.specifications
