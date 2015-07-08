@@ -1,3 +1,5 @@
+window.onsubmit=validateForm;
+
 function updateMSRPout() {
     var msrp = document.getElementById("msrp").value;
     document.getElementById("MSRPout").innerHTML = "$" + msrp;
@@ -17,5 +19,22 @@ function moreInfo(year, manufacturer, model, image, imgpath, category, size, msr
     	"MSRP: " + msrp + 
     	"MPG Combined: " + mpg + 
     	"Safety Rating: " + stars + 
-    	"Fuel: " + fuel);
+    	"Fuel: " + fuel
+    );
+}
+
+function validateForm() {
+    if (document.getElementById("categories").selectedIndex == -1) {
+  		alert("Please select a category.");
+  		return false;
+	}
+	if (document.getElementById("sizes").selectedIndex == -1) {
+  		alert("Please select a size.");
+  		return false;
+	}
+	if (document.getElementById("fuels").selectedIndex == -1) {
+  		alert("Please select a fuel.");
+  		return false;
+	}
+	return true;
 }

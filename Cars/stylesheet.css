@@ -23,6 +23,12 @@ body {
     float: right;
 }
 
+#hint {
+    float: left;
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
 li{
   float:left;
   display:inline;

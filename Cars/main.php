@@ -41,6 +41,7 @@
         <title>Car Finder</title>
         <link rel="stylesheet" href="stylesheet.css" type="text/css" /> 
         <script src="main.js"></script>
+        <script src="jquery-1.11.3.min.js"></script>
     </head>
 
     <body>
@@ -118,7 +119,7 @@
 		        <form action="main.php" id="form1">
 					<p>			
 						<strong>Category: </strong><br />
-						<select name ="categories[]" multiple="multiple">
+						<select id="categories" name ="categories[]" multiple="multiple">
 							<option value="'convertible'">Convertible</option>
 							<option value="'coupe'">Coupe</option>
 							<option value="'sedan'" selected="selected">Sedan</option>
@@ -130,7 +131,7 @@
 					</p>
 					<p>			
 						<strong>Size: </strong><br />
-						<select name ="sizes[]" multiple="multiple">
+						<select id="sizes" name ="sizes[]" multiple="multiple">
 							<option value="'compact'">Compact</option>
 							<option value="'midsize'" selected="selected">Midsize</option>
 							<option value="'fullsize'">Fullsize</option>
@@ -168,7 +169,7 @@
 					</p>
 					<p>
 						<strong>Fuel: </strong><br />
-						<select name ="fuel[]" multiple="multiple">
+						<select id="fuels" name ="fuel[]" multiple="multiple">
 							<option value="'gas'" selected="selected">Gas</option>
 							<option value="'diesel'">Diesel</option>
 							<option value="'hybrid'">Hybrid</option>
@@ -183,6 +184,9 @@
 				</form>
 	        </div>
 	        <div id="main">
+		        <div id="hint">
+		        	Hint: When you decide you don't like a car, you can click it to remove it from the list.
+	        	</div>
 	            <div id="sortByDiv">
 	            	<br>
             		<strong>Sort by: </strong>
@@ -201,21 +205,7 @@
 	            			foreach ($carlist as $key => $value) {
 	            				?>
 	            				<li>
-		            				<figure onclick=<?php echo
-			            				"moreInfo(".
-			            				$value->year.",".
-										$value->manufacturer.",".
-										$value->model.",".
-										$value->image.",".
-										$value->imgpath.",".
-										$value->category.",".
-										$value->size.",".
-										$value->msrp.",".
-										$value->mpg.",".
-										$value->stars.",".
-										$value->fuel.
-										")"
-									?>>
+		            				<figure>
 									  	<img src=<?php echo $value->imgpath; ?> width="150" height="80">
 									  	<figcaption><?php echo $value; ?></figcaption>
 									</figure>
@@ -229,3 +219,12 @@
 	    </div>
     </body>
 </html>
+
+<script>
+    $(document).ready(mainProcessing);
+      
+    function mainProcessing() {
+		$("figure").click(function() { $(this).hide() });
+    }
+	
+</script> 
