@@ -1,5 +1,37 @@
 <?php
 	require_once("dbUtil.php");	
+
+	class Car {
+		public $year;
+		public $manufacturer;
+		public $model;
+		public $image;
+		public $imgpath;
+		public $category;
+		public $size;
+		public $msrp;
+		public $mpg;
+		public $stars;
+		public $fuel;
+	
+		public function __construct($year, $manufacturer, $model, $image, $imgpath, $category, $size, $msrp, $mpg, $stars, $fuel) {
+			$this->year = $year;
+			$this->manufacturer = $manufacturer;
+			$this->model = $model;
+			$this->image = $image;
+			$this->imgpath = $imgpath;
+			$this->category = $category;
+			$this->size = $size;
+			$this->msrp = $msrp;
+			$this->mpg = $mpg;
+			$this->stars = $stars;
+			$this->fuel = $fuel;
+		}
+	
+		public function __toString() {
+			return $this->year." ".$this->manufacturer." ".$this->model;		
+		}
+	}
 ?>
 
 <!doctype html>
@@ -46,12 +78,14 @@
 						$image = $recordArray['image'];
 						$imgpath = $recordArray['imgpath'];
 
-						$carlist[] = array(
-						    "year" => $year,
-						    "manufacturer" => $manufacturer,
-						    "model" => $model,
-						    "imgpath" => $imgpath
-						);
+						$category = $recordArray['category'];
+						$size = $recordArray['size'];
+						$msrp = $recordArray['msrp'];
+						$mpg = $recordArray['mpg'];
+						$stars = $recordArray['stars'];
+						$fuel = $recordArray['fuel'];
+
+						$carlist[] = new Car($year, $manufacturer, $model, $image, $imgpath, $category, $size, $msrp, $mpg, $stars, $fuel);
 
 		     		}
 					mysqli_free_result($result);
@@ -167,9 +201,23 @@
 	            			foreach ($carlist as $key => $value) {
 	            				?>
 	            				<li>
-		            				<figure>
-									  	<img src=<?php echo $value["imgpath"]; ?> width="150" height="80">
-									  	<figcaption><?php echo $value["year"], " ", $value["manufacturer"], " ", $value["model"]; ?></figcaption>
+		            				<figure onclick=<?php echo
+			            				"moreInfo(".
+			            				$value->year.",".
+										$value->manufacturer.",".
+										$value->model.",".
+										$value->image.",".
+										$value->imgpath.",".
+										$value->category.",".
+										$value->size.",".
+										$value->msrp.",".
+										$value->mpg.",".
+										$value->stars.",".
+										$value->fuel.
+										")"
+									?>>
+									  	<img src=<?php echo $value->imgpath; ?> width="150" height="80">
+									  	<figcaption><?php echo $value; ?></figcaption>
 									</figure>
 								</li>
 								<?php
